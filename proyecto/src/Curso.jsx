@@ -1,29 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Curso = ()=> (
+
+const Curso = ({tittle, image, price, profesor})=> (
     <article className="card">
-  <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-    <img src="https://www.gettyimages.es/gi-resources/images/500px/983794168.jpg" alt="img"/>
-  </div>
-  <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
-    <h3 className="t5 s-mb-2 s-center">
-      Programación orientada a objetos con Go
-    </h3>
-    <div className="s-mb-2 s-main-center">
-      <div className="card__teacher s-cross-center">
-        <div className="card__avatar s-mr-1">
-          <div className="circle img-container">
-            <img src="https://www.gettyimages.es/gi-resources/images/500px/983794168.jpg" alt="img"/>
-          </div>
+        <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
+            <img src={image} alt={tittle} />
         </div>
-        <span className="small">Alexys Lozada</span>
-      </div>
-    </div>
-    <div className="s-main-center">
-      <a className="button--ghost-alert button--tiny" href="https://ed.team">$ 20USD</a>
-    </div>
-  </div>
+        <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
+            <h3 className='center'>{tittle}</h3>
+            <div className="s-main-center">
+                {`Prof.: ${profesor}`}
+            </div>
+            <div className="s-main-center">
+                <a className="button--ghost-alert button--tiny" href="https://ed.team">{price}</a>
+            </div>
+        </div>
 </article>
 )
+Curso.propTypes = {
+    tittle : PropTypes.string,
+    image : PropTypes.string,
+    price : PropTypes.number,
+    profesor : PropTypes.string
+}
+
+Curso.defaultProps = {
+    tittle : 'No se encontró titulo',
+    image : 'https://i.pinimg.com/originals/99/7e/2c/997e2cc2de1566d68d3b6168c62a6594.jpg',
+    price : '--',
+    profesor : ''
+}
 
 export default Curso
